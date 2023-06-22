@@ -45,6 +45,8 @@
 
     --halve_margin_offset: calc(calc(100vw - var(--content_width)) / 2);
     --halve_margin_offset_large: calc(100vw - var(--content_width));
+
+    --page-wrap: clamp(320px, var(--content_width), var(--content_width_max));
 }
 
 /*!
@@ -923,13 +925,10 @@ table {
     background-color: var(--miles_primary_dark);
     color: white;
     height: var(--header-height);
+    position: sticky;
+    top: 0;
 }
-/* line 6, sass/layout/_header.scss */
-.open-menu .site-header {
-    /* background-color: var(--miles_primary_light); */
-    /* height: 100vh; */
-}
-/* line 11, sass/layout/_header.scss */
+
 .site-header .site-header-container {
     display: flex;
     align-items: center;
@@ -946,17 +945,15 @@ table {
 @media (min-width: 768px) {
     /* line 11, sass/layout/_header.scss */
     .site-header .site-header-container {
-        max-width: var(--content_width-max);
-        width: var(--content_width);
+        width: var(--page-wrap);
         margin: auto;
         padding: 0;
     }
 }
 /* line 22, sass/layout/_header.scss */
 .site-header .site-branding {
-    height: 80px;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 /* line 30, sass/layout/_header.scss */
 .site-header .site-description,
@@ -965,32 +962,9 @@ table {
 }
 
 .site-header .site-branding a[rel='home'] {
-    height: 80px;
     display: flex;
     position: absolute;
     z-index: 50;
-}
-
-.fixed {
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    mix-blend-mode: normal;
-    /* position: fixed; */
-}
-
-@media (min-width: 768px) {
-    .site-header .site-branding a[rel='home'] {
-       /* position: fixed; */
-    }
-
-    .fixed {
-        position: relative;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        mix-blend-mode: normal;
-    }
 }
 
 @media screen and (max-width: 900px) and (orientation: landscape) {
@@ -1006,30 +980,10 @@ table {
 .open-menu .fixed .miles-logo .st0 {
     fill: white;
 }
-/* line 52, sass/layout/_header.scss */
-.fixed:after {
-    content: ' ';
-    display: block;
-    width: 100%;
-    height: 10px;
-    /* position: absolute; */
-    bottom: -10px;
-}
-
-.logged-in .fixed {
-   /*  transform: translate(0, 46px); */
-}
-
 #wpadminbar {
     position: fixed !important;
 }
 
-@media (min-width: 768px) {
-    /* line 63, sass/layout/_header.scss */
-    .logged-in .fixed {
-      /*  transform: translate(0, 32px); */
-    }
-}
 /* line 66, sass/layout/_header.scss */
 .fixed .cities-navigation {
     display: none;
@@ -1039,10 +993,7 @@ table {
 .miles-logo .st0 {
     fill: #fff;
 }
-/* line 77, sass/layout/_header.scss */
-.open-menu .miles-logo .st0 {
-    /* fill: white; */
-}
+
 /* line 79, sass/layout/_header.scss */
 .fixed .miles-logo .st0 {
     fill: var(--miles_primary_dark) !important;
@@ -1081,23 +1032,14 @@ body.open-menu {
 .search-container,
 .error-404,
 .entry-content {
-    /*
-  margin-left: 14px;
-  margin-right: 14px;
-  */
     max-width: 100vw;
 }
 @media (min-width: 768px) {
-    /* line 20, sass/layout/_grid.scss */
     .search-container,
     .error-404,
     .entry-content {
         margin: 0 auto;
-        margin: 0 auto;
-        /* max-width: var(--content_width_max);
-    width: var(--content_width);
-    */
-        width: 100vw;
+        width: var(--page-wrap);
     }
 }
 
