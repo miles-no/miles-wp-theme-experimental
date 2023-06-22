@@ -47,6 +47,9 @@
     --halve_margin_offset_large: calc(100vw - var(--content_width));
 
     --page-wrap: clamp(320px, var(--content_width), var(--content_width_max));
+    --mobile-horizontal-space: 1rem; /* 1rem = 16px (based on body font-size */
+    --cv-filter-max-columns: 5; /* The maximum number of columns inside cv-filter (Folkene) */
+
 }
 
 /*!
@@ -82,22 +85,22 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
    - Elements
    - Mixins
    - Variables
-   
- # Layout  
+
+ # Layout
    - Footer
-    - Header 
-	- Grid  
-	- Utilities
+    - Header
+    - Grid
+    - Utilities
 
 # Navigation
     - Nav-links
-    - Menus 
-    
+    - Menus
+
 # Blocks
    - Core-blocks
    - Custom-blocks
    - Base
-   
+
 # Components
    - Sidebar-content
    - Content-sidebar
@@ -107,7 +110,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
    - Widgets
    - Forms
    - Search
-   
+
 # CPT
 --------------------------------------------------------------*/
 /* Inherit box-sizing to more easily change it's value on a component level.
@@ -125,7 +128,7 @@ html {
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -135,7 +138,7 @@ html {
 }
 
 /* Sections
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the margin in all browsers.
  */
@@ -163,7 +166,7 @@ h1 {
 }
 
 /* Grouping content
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
@@ -186,7 +189,7 @@ pre {
 }
 
 /* Text-level semantics
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the gray background on active links in IE 10.
  */
@@ -259,7 +262,7 @@ sup {
 }
 
 /* Embedded content
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Remove the border on images inside links in IE 10.
  */
@@ -269,7 +272,7 @@ img {
 }
 
 /* Forms
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
@@ -352,7 +355,7 @@ fieldset {
  * 1. Correct the text wrapping in Edge and IE.
  * 2. Correct the color inheritance from `fieldset` elements in IE.
  * 3. Remove the padding so developers are not caught out when they zero out
- *		`fieldset` elements in all browsers.
+ *      `fieldset` elements in all browsers.
  */
 /* line 254, sass/_normalize.scss */
 legend {
@@ -429,7 +432,7 @@ textarea {
 }
 
 /* Interactive
-	 ========================================================================== */
+     ========================================================================== */
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
@@ -447,7 +450,7 @@ summary {
 }
 
 /* Misc
-	 ========================================================================== */
+     ========================================================================== */
 /**
  * Add the correct display in IE 10+.
  */
@@ -551,16 +554,20 @@ h1 {
 }
 
 h1.entry-title {
+    font-weight: 600;
+    margin-bottom: 5rem;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5rem;
-    width: 80vw;
-    font-weight: 600;
+    padding-left: var(--mobile-horizontal-space);
+    padding-right: var(--mobile-horizontal-space);
+    width: var(--page-wrap);
 }
 
 @media screen and (min-width: 768px) {
     h1.entry-title {
         margin-bottom: 10rem;
+        padding-left: 0;
+        padding-right: 0;
         width: 100%;
     }
 }
@@ -1026,7 +1033,7 @@ body.open-menu {
 }
 
 /*--------------------------------------------------------------
-## block widths 
+## block widths
 --------------------------------------------------------------*/
 /* line 20, sass/layout/_grid.scss */
 .search-container,
@@ -1557,8 +1564,8 @@ a.fagblogg-thumbnail:hover {
     text-decoration: underline;
 }
 
-/********* 
-Other menus 
+/*********
+Other menus
 ************/
 /* Cities menu.  desktop*/
 /* line 10, sass/navigation/_other-menus.scss */
@@ -1712,7 +1719,7 @@ Other menus
 }
 
 /**********************
-	Hamburger icon
+    Hamburger icon
 **************/
 /* line 6, sass/navigation/_mega-menu.scss */
 .menu-toggle {
@@ -2000,7 +2007,7 @@ Other menus
 }
 
 /*===============================
-  MEGA MENU SUB MENUS 
+  MEGA MENU SUB MENUS
 ==================================*/
 /* line 240, sass/navigation/_mega-menu.scss */
 .mega-menu-container,
@@ -3055,10 +3062,10 @@ img.aligncenter {
     text-decoration: none;
     color: #2b353f;
     font-size: 20px;
-    /*@media (min-width: $large) { 
+    /*@media (min-width: $large) {
    font-size: 20px;
-  } 
-  @media (min-width: $mobile) { 
+  }
+  @media (min-width: $mobile) {
    font-size: 18px;
   } */
 }
@@ -3160,14 +3167,14 @@ img.aligncenter {
 }
 /* line 335, sass/blocks/_custom-blocks.scss */
 .has-miles-red-background-color
-    .wp-block-pb-accordion-item
-    .c-accordion__title:after,
+.wp-block-pb-accordion-item
+.c-accordion__title:after,
 .has-dark-blue-background-color
-    .wp-block-pb-accordion-item
-    .c-accordion__title:after,
+.wp-block-pb-accordion-item
+.c-accordion__title:after,
 .has-black-background-color
-    .wp-block-pb-accordion-item
-    .c-accordion__title:after {
+.wp-block-pb-accordion-item
+.c-accordion__title:after {
     color: white;
 }
 
@@ -3279,24 +3286,24 @@ img.aligncenter {
 /* line 1, sass/components/_icons.scss */
 .icon {
     /*&.facebook a{
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-facebook.svg');
+    background-image: url('/wp-content/themes/miles/image/icon-socials-facebook.svg');
   }
   &.twitter a{
-  //	background-size: 28px auto ;
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-twitter.svg');
+  //    background-size: 28px auto ;
+    background-image: url('/wp-content/themes/miles/image/icon-socials-twitter.svg');
   }
   &.github a{
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-github.svg');
+    background-image: url('/wp-content/themes/miles/image/icon-socials-github.svg');
   }
   &.blog a{
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-facebook.svg');
+    background-image: url('/wp-content/themes/miles/image/icon-socials-facebook.svg');
   }
   &.linkedin a{
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-linkedin.svg');
+    background-image: url('/wp-content/themes/miles/image/icon-socials-linkedin.svg');
   }
   &.instagram a{
-  	background-image: url('/wp-content/themes/miles/image/icon-socials-instagram.svg');
-  }	 */
+    background-image: url('/wp-content/themes/miles/image/icon-socials-instagram.svg');
+  }  */
 }
 /* line 3, sass/components/_icons.scss */
 .icon a {
@@ -3409,18 +3416,17 @@ input[type='file']::file-selector-button {
 
 .single-post .entry-header {
     text-align: center;
-    max-width: 80vw;
+    width: var(--page-wrap);
     margin-left: auto;
     margin-right: auto;
+    padding-left: var(--mobile-horizontal-space);
+    padding-right: var(--mobile-horizontal-space);
 }
 @media screen and (min-width: 768px) {
     .single-post .post-thumbnail {
-        max-width: calc(calc(var(--content_width) / 2) * 2);
+        padding-left: 0;
+        padding-right: 0;
     }
-}
-
-@media screen and (min-width: 768px) {
-    max-width: calc(calc(var(--content_width) / 3) * 2);
 }
 
 /* line 50, sass/components/_posts-and-pages.scss */
@@ -3611,9 +3617,20 @@ input[type='file']::file-selector-button {
 .archive header,
 .blog > header,
 .blog .latestpodcast {
-    width: 80vw;
+    width: var(--page-wrap);
     grid-column: 1 / -1;
     margin: auto;
+    padding-left: var(--mobile-horizontal-space);
+    padding-right: var(--mobile-horizontal-space);
+}
+
+@media screen and (min-width: 768px) {
+    .archive header,
+    .blog > header,
+    .blog .latestpodcast {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 #main_content_header {
@@ -3622,27 +3639,16 @@ input[type='file']::file-selector-button {
     max-width: var(--content_width_max);
 }
 
-.blog .latestpodcast {
-}
-
 /* line 9, sass/components/_archives.scss */
 .archive .site-main,
 .blog .site-main .blog-grid {
     margin: auto;
-    max-width: 80vw;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-@media (min-width: 768px) {
-    /* line 9, sass/components/_archives.scss */
-    .archive .site-main,
-    .blog .site-main .blog-grid {
-        max-width: 80vw;
-        display: grid;
-        grid-template-columns: repeat(2, calc(50% - 2rem));
-        gap: 2em;
-    }
+    width: var(--page-wrap);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(260px,(100% - 3 * 1.5rem) / 4), 1fr));
+    gap: 1.5rem;
+    padding-left: var(--mobile-horizontal-space);
+    padding-right: var(--mobile-horizontal-space);
 }
 
 .blog-wrapper {
@@ -3665,15 +3671,6 @@ input[type='file']::file-selector-button {
     color: inherit;
 }
 
-@media (min-width: 1025px) {
-    /* line 9, sass/components/_archives.scss */
-    .archive .site-main,
-    .blog .site-main .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(3, calc(33% - 3rem));
-        gap: 3em;
-    }
-}
 /* line 26, sass/components/_archives.scss */
 .archive .site-main figure,
 .blog .site-main figure {
@@ -3862,61 +3859,61 @@ textarea {
 }
 
 @supports (-webkit-appearance: none) or (-moz-appearance: none) {
-    /*	input[type='checkbox'],
-  	input[type='radio'] {
-  		-webkit-appearance: none;
-  		-moz-appearance: none;
-  		width: 20px;
-  		height: 20px;
-  		border: 1px solid $silver;	
-  		position: relative;	
-  		background-color: white;
-  		border-radius: 5px;
-  	//	--active: #275EFE;
-      //	--active-inner: #fff;
-      //	--focus: 2px rgba(39, 94, 254, .25);
-      //	--border: #BBC1E1;
-      //	--border-hover: #275EFE;
-      //	--background: #fff;
-      //	--disabled: #F6F8FF;
-      //	--disabled-inner: #E1E6F9;
-  	}
-  	
-  	input[type='radio'] {
-      	border-radius: 100%;
-  	}
-    
-  	input[type="checkbox"]:focus,
-  	input[type='radio']:focus {
-  		border: $miles-red solid 1px;	
-  		outline: $miles-red;
+    /*  input[type='checkbox'],
+    input[type='radio'] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $silver;
+        position: relative;
+        background-color: white;
+        border-radius: 5px;
+    //  --active: #275EFE;
+      //    --active-inner: #fff;
+      //    --focus: 2px rgba(39, 94, 254, .25);
+      //    --border: #BBC1E1;
+      //    --border-hover: #275EFE;
+      //    --background: #fff;
+      //    --disabled: #F6F8FF;
+      //    --disabled-inner: #E1E6F9;
+    }
+
+    input[type='radio'] {
+        border-radius: 100%;
+    }
+
+    input[type="checkbox"]:focus,
+    input[type='radio']:focus {
+        border: $miles-red solid 1px;
+        outline: $miles-red;
       }
-     
-  	input[type='checkbox']:hover,
-  	input[type='radio']:hover {
-  		border: 1px solid rgba(black, 0.5);	
-  	}
-  	
+
+    input[type='checkbox']:hover,
+    input[type='radio']:hover {
+        border: 1px solid rgba(black, 0.5);
+    }
+
     input[type="checkbox"]:checked,
     input[type='radio']:checked {
-  		background: $silver;
-    } 
-  
-  	input[type="checkbox"]:checked + span.wpcf7-list-item-label:before, //causes a bug in the behaviour - needs fixing
-  	input[type='radio']:checked + span.wpcf7-list-item-label:before { 
-      	width: $base-margin;
-      	height: $base-margin;
-      	position: absolute;
-      	left: 4px;
-      	content: "✓";
-      	display:inline-block;
-      	color: white;
-      	z-index: 11;
-      	font-size: 14px;
-      	font-weight: bold;
-      	
-      	&:hover {border-color: $silver;}
-  	}  */
+        background: $silver;
+    }
+
+    input[type="checkbox"]:checked + span.wpcf7-list-item-label:before, //causes a bug in the behaviour - needs fixing
+    input[type='radio']:checked + span.wpcf7-list-item-label:before {
+        width: $base-margin;
+        height: $base-margin;
+        position: absolute;
+        left: 4px;
+        content: "✓";
+        display:inline-block;
+        color: white;
+        z-index: 11;
+        font-size: 14px;
+        font-weight: bold;
+
+        &:hover {border-color: $silver;}
+    }  */
     /* line 157, sass/components/_forms.scss */
     input[type='file']::-webkit-file-upload-button {
         -webkit-appearance: none;
@@ -4008,10 +4005,15 @@ input[type='submit']:focus {
 
 .cv-filter {
     margin: 4em auto;
-    gap: 1em;
+    gap: 3rem 2rem;
     flex-wrap: wrap;
-    width: 80vw;
     display: flex;
+}
+
+@media (min-width: 768px) {
+    .cv-filter {
+        grid-template-columns: repeat(auto-fill, minmax(max(260px, (100% - (var(--cv-filter-max-columns) - 1) * 2rem) / var(--cv-filter-max-columns)), 1fr));
+    }
 }
 
 .cv-filter ul {
@@ -4046,51 +4048,43 @@ input[type='submit']:focus {
 }
 
 #primary.our_people {
-    width: 80vw;
+    width: var(--page-wrap);
     margin-left: auto;
     margin-right: auto;
+    padding-right: var(--mobile-horizontal-space);
+    padding-left: var(--mobile-horizontal-space);
+}
+@media (min-width: 768px) {
+    #primary.our_people {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
-#primary.our_people .miles_offices_bar::before,
-#primary.our_people .miles_areas_bar::before {
-    /* bottom: unset; */
-    /* display: block; */
-    /* content: attr(aria-label); */
-    /* position: relative; */
-    /* width: initial; */
-}
-
-#primary.our_people .miles_offices_bar,
-#primary.our_people .miles_areas_bar {
+#primary.our_people .cv-filter-tags {
+    align-items: baseline;
     margin: 0 0 1em 0;
     display: flex;
     flex-direction: column;
 }
 
 @media (min-width: 600px) {
-    #primary.our_people .miles_offices_bar,
-    #primary.our_people .miles_areas_bar {
+    #primary.our_people .cv-filter-tags {
         flex-direction: row;
     }
 }
 
-#primary.our_people .miles_offices_bar > span,
-#primary.our_people .miles_areas_bar > span {
+#primary.our_people .cv-filter-tags > span {
     font-weight: 600;
     padding-right: 1em;
     display: inline-block;
 }
 
-#primary.our_people .miles_offices_bar {
+#primary.our_people .cv-filter-tags {
     margin-top: 4rem;
 }
 
-#primary.our_people .miles_areas_bar {
-    margin-bottom: 4rem;
-}
-
-#primary.our_people .miles_offices_bar ul,
-#primary.our_people .miles_areas_bar ul {
+#primary.our_people .cv-filter-tags ul {
     flex-wrap: wrap;
     gap: 1em;
     line-height: 1.4em;
@@ -4100,8 +4094,7 @@ input[type='submit']:focus {
     margin-right: 0;
 }
 
-#primary.our_people .miles_offices_bar ul li,
-#primary.our_people .miles_areas_bar ul li {
+#primary.our_people .cv-filter-tags ul li {
     /*
   color: var(--miles_primary_dark);
   border-radius: 2em;
@@ -4112,8 +4105,7 @@ input[type='submit']:focus {
     list-style-type: none;
 }
 
-#primary.our_people .miles_offices_bar ul li a,
-#primary.our_people .miles_areas_bar ul li a {
+#primary.our_people .cv-filter-tags ul li a {
     text-decoration: none;
     color: inherit;
 }
@@ -4194,36 +4186,21 @@ miles-fagblogg-teaser .wp-block-latest-posts__list {
     }
 }
 
-miles-fagblogg-teaser
-    .wp-block-latest-posts__list
-    li
-    .wp-block-latest-posts__post-title,
-miles-fagblogg-teaser
-    .wp-block-latest-posts__list
-    li
-    .wp-block-latest-posts__post-author,
-miles-fagblogg-teaser
-    .wp-block-latest-posts__list
-    li
-    .wp-block-latest-posts__post-date {
+miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__post-title,
+miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__post-author,
+miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__post-date {
     padding: 0 2rem;
     color: var(--miles_primary_light);
     background-color: var(--miles_secondary_four);
     display: block;
 }
 
-miles-fagblogg-teaser
-    .wp-block-latest-posts__list
-    li
-    .wp-block-latest-posts__post-date {
+miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__post-date {
     border-radius: 0 0 30px 30px;
     padding-bottom: 2rem;
 }
 
-miles-fagblogg-teaser
-    .wp-block-latest-posts__list
-    li
-    .wp-block-latest-posts__post-title {
+miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__post-title {
     padding-top: 1.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4256,19 +4233,12 @@ miles-fagblogg-teaser .wp-block-latest-posts__list li a {
 }
 
 .page-template-default .site-main .entry-content {
-    max-width: calc(100vw - 4rem);
+    width: var(--page-wrap);
     margin: auto;
 }
 
-@media (min-width: 768px) {
-    .page-template-default .site-main .entry-content {
-        max-width: 80vw;
-        margin: auto;
-    }
-}
-
 .home.page-template-default .site-main .entry-content {
-    max-width: 100vw;
+    width: var(--page-wrap);
     margin: auto;
 }
 
@@ -4297,7 +4267,7 @@ miles-office-banner {
 
 @media (min-width: 768px) {
     miles-office-banner {
-        width: 80vw;
+        width: var(--page-wrap);
     }
 }
 
