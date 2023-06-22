@@ -5,3 +5,6 @@ vendor
 *.iml
 .idearesp.json
 resp.json
+
+*.css.map
+.idea
