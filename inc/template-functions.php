@@ -2,7 +2,7 @@
 /**
  * Functions which enhance the theme by hooking into WordPress
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 /**

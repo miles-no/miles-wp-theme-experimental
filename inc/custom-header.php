@@ -8,7 +8,7 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 /**

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 get_header();

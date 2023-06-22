@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 if ( ! function_exists( 'miles_2020_posted_on' ) ) :

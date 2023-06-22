@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

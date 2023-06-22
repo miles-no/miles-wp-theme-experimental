@@ -1,4 +1,4 @@
-=== Miles 2020 ===
+=== Miles 2023 ===
 
 Contributors: automattic
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
@@ -10,7 +10,7 @@ Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-Miles 2020 is based on the startertheme Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+Miles 2023 is based on the startertheme Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 
 == Description ==
 
@@ -26,7 +26,7 @@ Description
 
 = Does this theme support any plugins? =
 
-Miles 2020 includes support for WooCommerce and for Infinite Scroll in Jetpack.
+Miles 2023 includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

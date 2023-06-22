@@ -2,7 +2,7 @@
 /**
  * Miles 2020 Theme Customizer
  *
- * @package Miles_2020
+ * @package Miles_2023
  */
 
 /**
