@@ -17,23 +17,20 @@ get_header();
 
 	<main id="primary" class="site-main">
 		<?php
-		if ( have_posts() ) :
+
+        if ( have_posts() ) :
+
+            $page_for_posts_id = get_option('page_for_posts');
+            $posts_page_content =  get_post_field('post_content', $page_for_posts_id);
 
 			if ( is_home() && ! is_front_page() ) :
 				?>
-				<header id="main_content_header">
-				    <!--screen-reader-text -->
-					<h1 class="page-title"><?php single_post_title(); ?></h1>
-				</header>
+
 				<section>
-					<?php
-					$block_content = '<!-- wp:block {"ref":9770} /-->';
-					echo do_blocks($block_content);
-					?>
-					<?php echo shortcode_podcast_teaser() ?>
+					<?php echo do_blocks($posts_page_content); 	?>
 				</section>
-				
-			
+
+
 				<?php
 			endif;
 			?> <section class="blog-grid"> <?php
@@ -50,19 +47,30 @@ get_header();
 
 			endwhile;
 
-			
+			?>
+            </section>
+            <section>
+                <?php echo shortcode_podcast_teaser() ?>
+            </section>
+            <section class="blog-pagination">
+                <?php
+                the_posts_navigation();
+                ?>
+            </section>
+
+
+            <?php
 
 		else :
 			get_template_part( 'template-parts/content-blog', 'none' );
-
 		endif;
 		?>
-		</section>
+
+
 	</main><!-- #main -->
 	
 	
 
 <?php
-the_posts_navigation();
 
 get_footer();
