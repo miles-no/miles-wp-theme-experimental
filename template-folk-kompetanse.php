@@ -80,7 +80,7 @@ foreach ($custom_tags as $roleKey => $roleId) {
     <main id="primary" class="site-main our_people">
         <h1><?php echo $title; ?></h1>
         <?php echo $content; ?>
-        <div class="miles_offices_bar" aria-description="Våre kontor i Norge." aria-label="Kontor">
+        <div class="miles_offices_bar cv-filter-tags" aria-description="Våre kontor i Norge." aria-label="Kontor">
             <span>Kontor</span>
             <ul>
                 <?php foreach ($offices as $office): ?>
@@ -91,7 +91,7 @@ foreach ($custom_tags as $roleKey => $roleId) {
                 <?php endforeach; ?>
             </ul>
         </div>
-        <div class="miles_areas_bar" aria-description="Hva vi er gode på." aria-label="Fagområder">
+        <div class="miles_areas_bar cv-filter-tags" aria-description="Hva vi er gode på." aria-label="Fagområder">
             <span>Fagområder</span>
             <ul>
                 <?php foreach ($roles as $role): ?>
@@ -111,9 +111,4 @@ foreach ($custom_tags as $roleKey => $roleId) {
         <miles-info>Vi finner den perfekte konsulenten for deg og ditt prosjekt!</miles-info>
         <div class="prefooter__fade"></div>
     </section>
-<?php
-
-
-get_footer();
-
-?>
+<?php get_footer(); ?>

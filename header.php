@@ -21,7 +21,7 @@
 	  *:not(:defined) {
 	    display: none;
 	  }
-	</style>	
+	</style>
 
 	<?php wp_head(); ?>
 </head>
@@ -37,9 +37,6 @@
 				<miles-logo width="123" color="#ffffff"></miles-logo>
 			</a>
 		</div><!-- .site-branding -->
-
-		
-
-		</div>
+		<?php get_template_part( 'template-parts/primary-mega-menu', 'menu' ); ?>
+	  </div>
 	</header><!-- #masthead -->
-	<?php get_template_part( 'template-parts/primary-mega-menu', 'menu' ); ?>
