@@ -26,7 +26,7 @@ get_header();
 			if ( is_home() && ! is_front_page() ) :
 				?>
 
-				<section>
+				<section class="pre-entry-content">
 					<?php echo do_blocks($posts_page_content); 	?>
 				</section>
 
@@ -68,8 +68,8 @@ get_header();
 
 
 	</main><!-- #main -->
-	
-	
+
+
 
 <?php
 

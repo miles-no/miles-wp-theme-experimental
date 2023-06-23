@@ -34,7 +34,7 @@
 	  <div class="site-header-container">
 		<div class="site-branding">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-				<miles-logo width="123" color="#ffffff"></miles-logo>
+				<miles-logo height="40.5" color="#ffffff"></miles-logo>
 			</a>
 		</div><!-- .site-branding -->
 		<?php get_template_part( 'template-parts/primary-mega-menu', 'menu' ); ?>

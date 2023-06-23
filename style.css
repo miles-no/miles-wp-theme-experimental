@@ -43,10 +43,10 @@
     --miles-h2-lineheight: calc(var(--miles-h2) * 1.5);
     --miles-h3-lineheight: calc(var(--miles-h3) * 1.5);
 
-    --halve_margin_offset: calc(calc(100vw - var(--content_width)) / 2);
+    --halve_margin_offset: calc(100vw - var(--content_width) / 2);
     --halve_margin_offset_large: calc(100vw - var(--content_width));
 
-    --page-wrap: clamp(320px, var(--content_width), var(--content_width_max));
+    --page-wrap: clamp(320px, 100%, var(--content_width_max));
     --mobile-horizontal-space: 1rem; /* 1rem = 16px (based on body font-size */
     --cv-filter-max-columns: 5; /* The maximum number of columns inside cv-filter (Folkene) */
 
@@ -119,10 +119,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
-}
-
-html {
     box-sizing: border-box;
 }
 
@@ -566,8 +562,6 @@ h1.entry-title {
 @media screen and (min-width: 768px) {
     h1.entry-title {
         margin-bottom: 10rem;
-        padding-left: 0;
-        padding-right: 0;
         width: 100%;
     }
 }
@@ -846,8 +840,8 @@ table {
 
 .footer__content {
     margin: auto;
-    width: var(--content_width);
-    max-width: var(--content_width_max);
+    width: var(--page-wrap);
+    padding: 0 var(--mobile-horizontal-space);
 }
 
 /* line 8, sass/layout/_footer.scss */
@@ -929,9 +923,9 @@ table {
 .site-header {
     background-color: var(--miles_primary_dark);
     color: white;
-    height: var(--header-height);
     position: sticky;
     top: 0;
+    width: 100%;
     z-index: 999;
 }
 
@@ -939,7 +933,7 @@ table {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 14px;
+    padding: 0 var(--mobile-horizontal-space);
 }
 
 .site-header .site-header-container a:hover,
@@ -953,13 +947,12 @@ table {
     .site-header .site-header-container {
         width: var(--page-wrap);
         margin: auto;
-        padding: 0;
     }
 }
 /* line 22, sass/layout/_header.scss */
 .site-header .site-branding {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
 }
 /* line 30, sass/layout/_header.scss */
 .site-header .site-description,
@@ -969,7 +962,6 @@ table {
 
 .site-header .site-branding a[rel='home'] {
     display: flex;
-    position: absolute;
     z-index: 50;
 }
 
@@ -1013,21 +1005,13 @@ table {
 
 /* line 1, sass/layout/_grid.scss */
 .site-main {
-    margin-top: 6rem;
     margin-bottom: 6rem;
-}
-
-.home .site-main {
-    margin-top: 0;
-}
-
-/* line 5, sass/layout/_grid.scss */
-body {
+    min-height: 100%;
     overflow-x: hidden;
 }
-/* line 8, sass/layout/_grid.scss */
-body.open-menu {
-    overflow-y: hidden;
+
+.site-main > p {
+    max-width: 70rem;
 }
 
 /*--------------------------------------------------------------
@@ -1037,7 +1021,8 @@ body.open-menu {
 .search-container,
 .error-404,
 .entry-content {
-    max-width: 100vw;
+    max-width: 100svw;
+    padding: 0 var(--mobile-horizontal-space);
 }
 @media (min-width: 768px) {
     .search-container,
@@ -1048,31 +1033,28 @@ body.open-menu {
     }
 }
 
+.entry-content > miles-banner {
+    width: 100dvw;
+    transform: translateX(-50%);
+    position: relative;
+    left: 50%;
+}
+
+.pre-entry-content {
+    margin: 6rem auto 0;
+    padding: 0 var(--mobile-horizontal-space);
+    width: var(--page-wrap);
+}
+
+.pre-entry-content > p {
+    max-width: 70rem;
+}
+
 /* line 33, sass/layout/_grid.scss */
-.custom-block-large-banner {
-    margin-right: calc(50% - 50vw);
-    margin-left: calc(50% - 50vw);
-    max-width: 100vw;
-    width: 100vw;
-}
-
-@media (min-width: 768px) {
-    /* line 40, sass/layout/_grid.scss */
-    .alignfull,
-    .custom-block-feature-block {
-        margin-right: calc(50% - 50vw);
-        margin-left: calc(50% - 50vw);
-        max-width: 100vw;
-        width: 100vw;
-    }
-}
-
-@media (min-width: 768px) {
-    /* line 50, sass/layout/_grid.scss */
-    .alignwide {
-        margin-left: calc(25% - 25vw);
-        margin-right: calc(25% - 25vw);
-    }
+.alignfull,
+.custom-block-feature-block {
+    max-width: 100%;
+    width: 100%;
 }
 
 @media (min-width: 768px) {
@@ -2801,23 +2783,10 @@ img.aligncenter {
     clear: both;
 }
 
-/*
-@media screen and (min-width: 768px) {
-  .feature-wrapper {
-      display: flex;
-      flex-direction: column;
-      width: var(--content_width);
-      max-width: var(--content_width_max);
-      margin: 2rem auto  2rem auto;
-    }
-}
-*/
 
 .feature-wrapper {
     display: flex;
     flex-direction: column;
-    width: var(--content_width);
-    max-width: var(--content_width_max);
     margin: 2rem auto 2rem auto;
 }
 
@@ -3222,10 +3191,6 @@ img.aligncenter {
     grid-template-areas: 'header' 'main' 'footer';
 }
 
-#masthead {
-    width: 100vw;
-}
-
 /* line 1, sass/components/_icons.scss */
 .icon {
     /*&.facebook a{
@@ -3344,11 +3309,7 @@ input[type='file']::file-selector-button {
 /******************
 # Single
 ****************/
-/*.site-main{
-    max-width: $col_10;
-    margin:auto;
 
-} */
 /* line 43, sass/components/_posts-and-pages.scss */
 .single-post .post-thumbnail {
     text-align: center;
@@ -3364,12 +3325,6 @@ input[type='file']::file-selector-button {
     margin-right: auto;
     padding-left: var(--mobile-horizontal-space);
     padding-right: var(--mobile-horizontal-space);
-}
-@media screen and (min-width: 768px) {
-    .single-post .post-thumbnail {
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
 
 /* line 50, sass/components/_posts-and-pages.scss */
@@ -3400,6 +3355,11 @@ input[type='file']::file-selector-button {
 /* line 69, sass/components/_posts-and-pages.scss */
 .single-post .entry-footer {
     display: none;
+}
+
+footer.entry-footer {
+    margin: 0 auto;
+    width: var(--page-wrap);
 }
 
 .single-post h2 {
@@ -3567,15 +3527,6 @@ input[type='file']::file-selector-button {
     padding-right: var(--mobile-horizontal-space);
 }
 
-@media screen and (min-width: 768px) {
-    .archive header,
-    .blog > header,
-    .blog .latestpodcast {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
 #main_content_header {
     margin: auto;
     width: var(--content_width);
@@ -3592,6 +3543,10 @@ input[type='file']::file-selector-button {
     gap: 1.5rem;
     padding-left: var(--mobile-horizontal-space);
     padding-right: var(--mobile-horizontal-space);
+}
+
+.blog .site-main .blog-grid > * {
+    max-width: 100%;
 }
 
 .blog-wrapper {
@@ -3994,14 +3949,9 @@ input[type='submit']:focus {
     width: var(--page-wrap);
     margin-left: auto;
     margin-right: auto;
+    margin-top: 6rem;
     padding-right: var(--mobile-horizontal-space);
     padding-left: var(--mobile-horizontal-space);
-}
-@media (min-width: 768px) {
-    #primary.our_people {
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
 
 #primary.our_people .cv-filter-tags {
@@ -4175,13 +4125,8 @@ miles-fagblogg-teaser .wp-block-latest-posts__list li a {
     color: var(--miles_secondary_three);
 }
 
-.page-template-default .site-main .entry-content {
-    width: var(--page-wrap);
-    margin: auto;
-}
-
 .home.page-template-default .site-main .entry-content {
-    width: var(--page-wrap);
+    width: 100%;
     margin: auto;
 }
 
