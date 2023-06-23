@@ -9,17 +9,15 @@
 
 ?>
 
- <?php /* echo '<a href="'. get_the_permalink() . '" class="fagblogg-thumbnail fagblogg-column">'; */ ?> 
-<miles-blog-card id="post-<?php echo the_ID(); ?>" url="<?php echo get_permalink(); ?>" author="<?php echo the_author(); ?>">
-	<?php if ( has_post_thumbnail() ) { ?>
-		<figure slot="image">
-			<?php the_post_thumbnail('feature-image'); ?>
-		</figure>
-	<?php } ?>
-
-	<?php  the_title( '<h2 slot="title">', '</h2>' ); ?>
-	<div slot="meta">
-		<?php miles_2020_posted_on();?>
-	</div><!-- .entry-meta -->
+<miles-blog-card
+        id="post-<?php echo the_ID(); ?>"
+        title="<?php the_title(); ?>"
+        url="<?php echo get_permalink(); ?>"
+        author="<?php echo the_author(); ?>"
+        posted="<?php echo get_the_date(); ?>"
+        <?php if ( has_post_thumbnail() ) : ?>
+            image="<?php the_post_thumbnail('feature-image'); ?>"
+        <?php endif; ?>
+>
 </miles-blog-card><!-- #post-<?php the_ID(); ?> -->
 <!-- <?php post_class(); ?>  -->
