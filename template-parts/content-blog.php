@@ -13,10 +13,10 @@
         id="post-<?php echo the_ID(); ?>"
         title="<?php the_title(); ?>"
         url="<?php echo get_permalink(); ?>"
-        author="<?php echo the_author(); ?>"
+        author="<?php the_author(); ?>"
         posted="<?php echo get_the_date(); ?>"
-        <?php if ( has_post_thumbnail() ) : ?>
-            image="<?php the_post_thumbnail('feature-image'); ?>"
+        <?php if ( $image = wp_get_attachment_image_src( get_post_thumbnail_id( ), 'feature-image' ) ) : ?>
+            image="<?php echo $image[0]; ?>"
         <?php endif; ?>
 >
 </miles-blog-card><!-- #post-<?php the_ID(); ?> -->
