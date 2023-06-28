@@ -50,6 +50,8 @@
     --mobile-horizontal-space: 1rem; /* 1rem = 16px (based on body font-size */
     --cv-filter-max-columns: 5; /* The maximum number of columns inside cv-filter (Folkene) */
     --profile-card-width: 16rem;
+
+    --default_focus: 2px solid var(--miles_secondary_two);
 }
 
 /*!
@@ -792,6 +794,13 @@ table {
     width: 100%;
 }
 
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+:focus {
+  outline: var(--default_focus)
+}
+
 /**
  * Mixin transition cross browser
  */
@@ -1422,7 +1431,7 @@ a:active {
 }
 /* line 14, sass/navigation/_nav-links.scss */
 a:focus {
-    outline: thin dotted #2b353f;
+    outline: 2px solid var(--miles_link_color_hover);
 }
 /* line 18, sass/navigation/_nav-links.scss */
 a:hover,
