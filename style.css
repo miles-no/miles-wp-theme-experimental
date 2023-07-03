@@ -17,7 +17,7 @@
     --miles_link_color_ondark: #94e5db;
     --miles_link_color_ondark_hover: #183f46;
 
-    --miles_default_bg: #f5f5f5;
+    --miles_default_bg: #FCF8F3;
 
     --miles_effect_shadow_low: 0 0 4px 0 #00000033;
     --miles_effect_shadow_high: 0 0 16px 0 #00000033;
@@ -1019,7 +1019,9 @@ table {
     overflow-x: hidden;
 }
 
-.site-main > p {
+.site-main > p,
+.pre-entry-content > p,
+.wp-block-group .wp-block-group__inner-container > p {
     max-width: 70rem;
 }
 
@@ -1033,12 +1035,20 @@ table {
     max-width: 100svw;
     padding: 0 var(--mobile-horizontal-space);
 }
+
+.site-main .type-page .entry-content {
+    margin-top: 3rem;
+}
 @media (min-width: 768px) {
     .search-container,
     .error-404,
     .entry-content {
         margin: 0 auto;
         width: var(--page-wrap);
+    }
+
+    .site-main .type-page .entry-content {
+        margin-top: 6rem;
     }
 }
 
@@ -1049,14 +1059,20 @@ table {
     left: 50%;
 }
 
+.entry-content > miles-banner:first-child {
+    margin-top: -3rem;
+}
+
+@media (min-width: 768px) {
+    .entry-content > miles-banner:first-child {
+        margin-top: -6rem;
+    }
+}
+
 .pre-entry-content {
     margin: 6rem auto 0;
     padding: 0 var(--mobile-horizontal-space);
     width: var(--page-wrap);
-}
-
-.pre-entry-content > p {
-    max-width: 70rem;
 }
 
 /* line 33, sass/layout/_grid.scss */
@@ -2454,10 +2470,6 @@ img.aligncenter {
     margin-right: auto;
 }
 
-/* line 216, sass/blocks/_core-blocks.scss */
-.wp-block-image img {
-    width: 100%;
-}
 /* line 218, sass/blocks/_core-blocks.scss */
 .wp-block-image figcaption {
     text-align: left;
