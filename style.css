@@ -4144,6 +4144,16 @@ miles-fagblogg-teaser .wp-block-latest-posts__list li {
     padding-bottom: 2rem;
 }
 
+/* miles-fagblogg-teaser Focus style */
+miles-fagblogg-teaser .wp-block-latest-posts__list li:focus-within>*:not(:first-child) {
+  color: var(--miles_link_color_ondark);
+  background-color: var(--miles_link_color_ondark_hover);
+}
+
+miles-fagblogg-teaser .wp-block-latest-posts__list li a:focus {
+  outline: none;
+}
+
 miles-fagblogg-teaser .wp-block-latest-posts__list li img {
     padding: 0;
     aspect-ratio: 1 / 1;
