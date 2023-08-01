@@ -1069,6 +1069,13 @@ table {
     }
 }
 
+.entry-content > miles-image-slider {
+    width: 100dvw;
+    transform: translateX(-50%);
+    position: relative;
+    left: 50%;
+}
+
 .pre-entry-content {
     margin: 6rem auto 0;
     padding: 0 var(--mobile-horizontal-space);
@@ -4137,7 +4144,7 @@ miles-fagblogg-teaser .wp-block-latest-posts__list li .wp-block-latest-posts__po
     -webkit-line-clamp: 2; /* number of lines to show */
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 4rem;
+    height: 4.66rem;
 }
 
 miles-fagblogg-teaser .wp-block-latest-posts__list li {
