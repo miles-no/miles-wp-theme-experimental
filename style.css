@@ -1069,7 +1069,7 @@ table {
     }
 }
 
-.entry-content > miles-image-slider {
+.entry-content miles-image-slider {
     width: 100dvw;
     transform: translateX(-50%);
     position: relative;
