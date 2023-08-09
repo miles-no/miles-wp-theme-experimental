@@ -1519,24 +1519,27 @@ a.fagblogg-thumbnail:hover {
 .comment-navigation .nav-links,
 .posts-navigation .nav-links,
 .post-navigation .nav-links {
+    flex-direction: row;
+    width: var(--page-wrap);
     display: flex;
-    max-width: 91.6666%;
+    max-width: calc(100% - 2rem);
     margin-right: auto;
     margin-left: auto;
 }
-@media (min-width: 768px) {
-    /* line 57, sass/navigation/_nav-links.scss */
-    .comment-navigation .nav-links,
-    .posts-navigation .nav-links,
-    .post-navigation .nav-links {
-        max-width: var(--content_width);
-    }
+
+.comment-navigation .nav-links a,
+.posts-navigation .nav-links a,
+.post-navigation .nav-links a {
+    font-size: 1rem;
+    line-height: 1.5;
 }
+
+
 /* line 65, sass/navigation/_nav-links.scss */
 .single-menneskene .comment-navigation .nav-links,
 .single-menneskene .posts-navigation .nav-links,
 .single-menneskene .post-navigation .nav-links {
-    background: url('image/arrow-back-red-1.svg') no-repeat left 8px;
+    background: url('image/arrow-back-red-1.svg') no-repeat left center;
     background-size: 27px;
     padding-left: 36px;
 }
@@ -1552,7 +1555,7 @@ a.fagblogg-thumbnail:hover {
 .comment-navigation .nav-links .nav-previous,
 .posts-navigation .nav-links .nav-previous,
 .post-navigation .nav-links .nav-previous {
-    background: url('image/arrow-back-red-1.svg') no-repeat left 8px;
+    background: url('image/arrow-back-red-1.svg') no-repeat left center;
     background-size: 27px;
     padding-left: 36px;
 }
@@ -1562,7 +1565,7 @@ a.fagblogg-thumbnail:hover {
 .post-navigation .nav-links .nav-next {
     margin-left: auto;
     text-align: right;
-    background: url('image/arrow-next-red.svg') no-repeat right 8px;
+    background: url('image/arrow-next-red.svg') no-repeat right center;
     background-size: 27px;
     padding-right: 36px;
 }
