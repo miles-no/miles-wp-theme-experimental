@@ -728,7 +728,14 @@ p {
 /* line 12, sass/base/_elements.scss */
 ul,
 ol {
-    margin: 0 0 1.5em 3em;
+    margin: 0;
+}
+
+@media (min-width: 1025px) {
+    ul,
+    ol {
+        margin: 0 0 1.5em 3em;
+    }
 }
 
 /* line 17, sass/base/_elements.scss */
@@ -2297,15 +2304,16 @@ article.has-post-thumbnail img {
     aspect-ratio: 5 / 4;
 }
 
+/*
 @media (min-width: 768px) {
     article.has-post-thumbnail img {
-        /* edited 13.03.2023 HL */
         margin-right: auto;
         margin-left: auto;
         object-fit: cover;
         aspect-ratio: 16 / 9;
     }
 }
+*/
 
 /* Nested columns - reusable block
 --------------------------------------------- */
