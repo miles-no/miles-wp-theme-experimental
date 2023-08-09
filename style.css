@@ -12,10 +12,12 @@
     --miles_secondary_five: #ff303b; /* korall */
 
     --miles_link_color: #183f46;
-    --miles_link_color_hover: #94e5db;
+    --miles_link_color_hover: var(--miles_secondary_two);
+    --miles_link_color_hover_bg: var(--miles_secondary_one);
 
     --miles_link_color_ondark: #94e5db;
-    --miles_link_color_ondark_hover: #183f46;
+    --miles_link_color_ondark_hover: var(--miles_secondary_one);
+    --miles_link_color_ondark_hover_bg: var(--miles_secondary_two);
 
     --miles_default_bg: #FCF8F3;
 
@@ -855,11 +857,17 @@ table {
 
 /* line 8, sass/layout/_footer.scss */
 .site-footer a:link,
-.site-footer a:hover,
-.site-footer a:focus,
 .site-footer a:visited {
-    color: white !important;
+  color: white;
 }
+
+.site-footer a:hover,
+.site-footer a:focus {
+  color: var(--miles_link_color_ondark_hover);
+  background-color: var(--miles_link_color_ondark_hover_bg);
+  outline: var(--miles_link_color_ondark_hover_bg);
+}
+
 /* line 13, sass/layout/_footer.scss */
 .site-footer a:hover {
     text-decoration: underline;
@@ -1450,7 +1458,8 @@ a:visited {
 a:hover,
 a:focus,
 a:active {
-    background-color: var(--miles_link_color_hover);
+    color: var(--miles_link_color_hover);
+    background-color: var(--miles_link_color_hover_bg);
 }
 /* line 14, sass/navigation/_nav-links.scss */
 a:focus {
