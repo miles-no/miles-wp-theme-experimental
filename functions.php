@@ -182,11 +182,11 @@ function miles_fagblogg_teaser( $block_content, $block ) {
   }
 
   if (str_contains($block['attrs']['className'], 'miles-fagblogg-teaser')) {
+	  $output = '<miles-fagblogg-teaser>';
+	  $output .= $block_content;
+	  $output .= '</miles-fagblogg-teaser>';
 
-	$output = '<miles-fagblogg-teaser>';
-	$output .= $block_content;
-	$output .= '</miles-fagblogg-teaser>';
-	return $output;
+	  return $output;
   } else {
 	return $block_content;
   }
@@ -215,17 +215,7 @@ function miles_overlap_block( $block_content, $block ) {
 
 
 function miles_2020_widgets_init() {
-	/*register_sidebar(
-		array(
-			'name'          => esc_html__( 'Sidebar', 'miles_2020' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'miles_2020' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	); */
+
 	register_sidebar( array(
 		'name'          => esc_html__( 'Footer Contacts', 'miles_2020' ),
 		'id'            => 'footer-contact',
@@ -274,13 +264,14 @@ function miles_2020_scripts() {
    						filemtime(get_template_directory() . '/js/navigation.js'),
    						true);
 
-	
-	   wp_enqueue_script( 'miles_2020-cvpartner',
-   						get_template_directory_uri() . '/js/cvpartner.js',
-   						array(),
-   						filemtime(get_template_directory() . '/js/cvpartner.js'),
-   						true);
 
+	/*
+		   wp_enqueue_script( 'miles_2020-cvpartner',
+							   get_template_directory_uri() . '/js/cvpartner.js',
+							   array(),
+							   filemtime(get_template_directory() . '/js/cvpartner.js'),
+							   true);
+	*/
 	   wp_enqueue_script( 'miles_2020-wc',
 	   get_template_directory_uri() . '/js/miles-wc.es.js',
 	   array(),
@@ -395,144 +386,6 @@ function wpmm_init() {
 add_action( 'widgets_init', 'wpmm_init' );
 
 
-
-
-/* =========================================
-   Custom Post MENNESKENE 
-  ========================================== */
-
-function miles_menneskene() {
-
-	$labels = array(
-		'name'                  => _x( 'Menneskene', 'Post Type General Name', 'text_domain' ),
-		'singular_name'         => _x( 'Menneskene', 'Post Type Singular Name', 'text_domain' ),
-		'menu_name'             => __( 'Menneskene', 'text_domain' ),
-		'name_admin_bar'        => __( 'Menneskene', 'text_domain' ),
-		'archives'              => __( 'menneskene', 'text_domain' ),
-
-
-	);
-
-	$args = array(
-		'label'                 => __( 'menneskene', 'text_domain' ),
-		'description'           => __( 'Menneskene liste', 'text_domain' ),
-		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'post-formats'),
-		'hierarchical'          => true,
-		'public'                => true,
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'menu_position'         => 40,
-	//	'show_in_admin_bar'     => true,
-	//	'show_in_nav_menus'     => true,
-	//	'can_export'            => true,
-		'has_archive'           => false,	
-	//	'exclude_from_search'   => true,
-	//	'publicly_queryable'    => true,
-		'capability_type'       => 'page',
-		'rewrite' => array(  'slug' => 'ansatte' ),
-            'show_in_rest' => true,
-	);
-	
-	
-	register_post_type( 'menneskene', $args );
-	   // register taxonomy
-    register_taxonomy('by', 'menneskene', 
-    	array(
-    		'hierarchical' => true, 
-    		          'public' => false,
-    	  'show_ui' => true,
-    	  'show_in_rest' => true,
-    		'label' => 'By', 
-    		'query_var' => true, 
-    		'has_archive'  => 'category-menneskene',
-    		'rewrite' => array( 
-    				'slug' => 'by', 
-    				'with_front' => false
-    		)
-    	)
-    );
-    register_taxonomy('role', 'menneskene', 
-    	array(
-          'public' => false,
-    	  'show_ui' => true,
-    	  'show_in_rest' => true,
-    		'hierarchical' => true, 
-    		'label' => 'Role', 
-    		'query_var' => true, 
-    		'has_archive'  => 'category-role',
-    		'rewrite' => array( 
-    				'slug' => 'role', 
-    				'with_front' => false
-    		)
-    	)
-    );
-}
-
-
-add_action( 'init', 'miles_menneskene', 0 );
-
-
-add_filter( 'manage_menneskene_posts_columns', 'miles_filter_posts_columns' );
-function miles_filter_posts_columns( $columns ) {
-	$columns = array(
- 	'cb' => $columns['cb'],
- 	'title' => 'Title',
- 	 'onboarding_date' => __( 'Onboarding'),
-  	  'offboarding_date' => __( 'Offboarding')
-	);
-  return $columns;
-}
-
-add_action( 'manage_menneskene_posts_custom_column', 'miles_menneskene_column', 10, 2);
-function miles_menneskene_column( $column, $post_id ) {
-  // Image column
-  if ( 'onboarding_date' === $column ) {
-    echo get_field('onboarding_date', $post_id);
-  }
-  else if( 'offboarding_date' === $column) {
-  	echo get_field('offboarding_date', $post_id);
-  }
-}
-
-
-add_filter( 'manage_edit-menneskene_sortable_columns', 'miles_menneskene_sortable_columns');
-function miles_menneskene_sortable_columns( $columns ) {
-  $columns['onboarding_date'] = 'onboarding_date';
-  $columns['offboarding_date'] = 'offboarding_date';
-  return $columns;
-}
-
-add_action( 'pre_get_posts', 'miles_posts_orderby' );
-function miles_posts_orderby( $query ) {
-  if( ! is_admin() || ! $query->is_main_query() ) {
-    return;
-  }
-
-  if ( 'onboarding_date' === $query->get( 'orderby') ) {
-    $query->set( 'orderby', 'meta_value' );
-    $query->set( 'meta_key', 'onboarding_date' );
-    $query->set( 'meta_type', 'date' );
-  }
-  else if ('offboarding_date' === $query->get( 'orderby') ) {
-    $query->set( 'orderby', 'meta_value' );
-    $query->set( 'meta_key', 'offboarding_date' );
-    $query->set( 'meta_type', 'date' );
-  }
-}
-
-
-function miles_menneskene_icon() {
-  ?>
-	<style type="text/css" media="screen">
-	  li.menu-icon-menneskene div.wp-menu-image::before { 
-				content: "\f338";
-		}
-	</style>
-	<?php
-  
-  }
-add_action( 'admin_head', 'miles_menneskene_icon' );
 
 
 /********
