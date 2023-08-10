@@ -33,7 +33,7 @@
 	<header id="masthead" class="site-header fixed">
 	  <div class="site-header-container">
 		<div class="site-branding">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="Forside Miles.no">
 				<miles-logo height="40.5" color="#ffffff"></miles-logo>
 			</a>
 		</div><!-- .site-branding -->
