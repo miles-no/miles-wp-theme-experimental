@@ -987,12 +987,7 @@ table {
 .site-header .site-branding a[rel='home'] {
     display: flex;
     z-index: 50;
-}
-
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    .site-header .site-branding a[rel='home'] {
-        position: absolute;
-    }
+    outline-offset: 3px;
 }
 
 .open-menu .fixed {
@@ -2948,9 +2943,12 @@ img.aligncenter {
     }
 }
 /* line 173, sass/blocks/_custom-blocks.scss */
+.feature-content .link_wrapper a.link:focus,
+.feature-content .link_wrapper a.link:active,
 .feature-content .link_wrapper a.link:hover {
     color: var(--miles_link_color_hover);
     background-color: var(--miles_link_color_hover_bg);
+    outline: 0.2em solid var(--miles_link_color_hover_bg);
     text-decoration: underline;
 }
 /* line 175, sass/blocks/_custom-blocks.scss */
