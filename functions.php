@@ -272,12 +272,14 @@ function miles_2020_scripts() {
 							   filemtime(get_template_directory() . '/js/cvpartner.js'),
 							   true);
 	*/
+
+	/*
 	   wp_enqueue_script( 'miles_2020-wc',
 	   get_template_directory_uri() . '/js/miles-wc.es.js',
 	   array(),
 	   filemtime(get_template_directory() . '/js/miles-wc.es.js'),
 	   true);
-   	
+   	*/
     // Translatable text for the navigation files IOK 2020-04-15
         $miles_2020n = array(
                                         'expand'   => __( 'Expand child menu', 'miles_2020' ),
@@ -402,15 +404,6 @@ add_image_size( 'blog-feature-image', 385, 258, true );
 add_image_size( 'medium-gallery', 500, 300, true );
 
 
-/****************************************
-# ACF google maps api key PMB 2019-20-07
-*****************************************/
-
-function my_acf_init() {
-	acf_update_setting('google_api_key', 'AIzaSyBI-g6ODk1s3DMlHiMtejG3V-NeNf2U3Ms');
-}
-
-add_action('acf/init', 'my_acf_init');
 
 /************************************************************************
 Add Gutenberg custom editor-style
