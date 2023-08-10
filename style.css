@@ -987,12 +987,7 @@ table {
 .site-header .site-branding a[rel='home'] {
     display: flex;
     z-index: 50;
-}
-
-@media screen and (max-width: 900px) and (orientation: landscape) {
-    .site-header .site-branding a[rel='home'] {
-        position: absolute;
-    }
+    outline-offset: 3px;
 }
 
 .open-menu .fixed {
