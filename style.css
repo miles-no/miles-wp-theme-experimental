@@ -2949,6 +2949,8 @@ img.aligncenter {
 }
 /* line 173, sass/blocks/_custom-blocks.scss */
 .feature-content .link_wrapper a.link:hover {
+    color: var(--miles_link_color_hover);
+    background-color: var(--miles_link_color_hover_bg);
     text-decoration: underline;
 }
 /* line 175, sass/blocks/_custom-blocks.scss */
@@ -4114,11 +4116,6 @@ miles-podcast-teaser {
     object-fit: cover;
 }
 
-/*For kompteansesiden */
-@media (min-width: 600px) {
-}
-@media (min-width: 1025px) {
-}
 
 /**
   Fagblog teaser slot
