@@ -219,13 +219,6 @@ function miles_2020_scripts() {
 							   true);
 	*/
 
-	/*
-	   wp_enqueue_script( 'miles_2020-wc',
-	   get_template_directory_uri() . '/js/miles-wc.es.js',
-	   array(),
-	   filemtime(get_template_directory() . '/js/miles-wc.es.js'),
-	   true);
-   	*/
     // Translatable text for the navigation files IOK 2020-04-15
         $miles_2020n = array(
                                         'expand'   => __( 'Expand child menu', 'miles_2020' ),
