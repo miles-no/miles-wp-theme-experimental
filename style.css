@@ -4235,7 +4235,7 @@ miles-office-banner {
   MILES PAGES
   */
 
-.page-fagomrader miles-info-block {
+.page-fagomrader miles-info-block,  .page-vi-er-miles miles-image-block {
     margin-bottom: 4rem;
 }
 
