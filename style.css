@@ -545,11 +545,8 @@ h1.has-large-font-size {
 
 /* line 49, sass/base/_typography.scss */
 h1 {
-    width: 33%;
-    /* color: var(--miles_primary_light); */
     font-size: var(--miles-h1);
     line-height: var(--miles-h1-lineheight);
-    /* margin: 56px 0; */
     font-weight: 700;
 }
 
@@ -943,6 +940,11 @@ table {
 .site-footer ul.mks_social_widget_ul a:before {
     color: var(--miles_primary_dark);
 }
+
+.site-footer ul.mks_social_widget_ul a:focus {
+  outline: var(--default_focus);
+}
+
 /* line 1, sass/layout/_header.scss */
 .site-header {
     background-color: var(--miles_primary_dark);
@@ -3935,7 +3937,7 @@ input[type='reset']:active,
 input[type='reset']:focus,
 input[type='submit']:active,
 input[type='submit']:focus {
-    outline: thin dotted;
+    outline: var(--default_focus);
 }
 
 /* line 223, sass/components/_forms.scss */
