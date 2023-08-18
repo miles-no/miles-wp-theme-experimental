@@ -400,25 +400,6 @@ add_theme_support( 'editor-color-palette', array(
 add_filter( 'wprss_ftp_link_post_title', '__return_true' );
 
 /**
- * Add custom short codes
- */
-include_once 'shortcodes.php';
-include_once 'shortcodes_dev.php';
-
-if (function_exists('register_shortcodes') && function_exists('register_shortcodes_dev')) {
-    add_action('init', 'register_shortcodes');
-	add_action('init', 'register_shortcodes_dev');
-} else {
-    echo "shortcode functions are not available.<br />\n";
-}
-
-/**
- * enable use of shortcodes in php files
- */
-add_filter( 'widget_text', 'do_shortcode' );
-
-
-/**
  * Register Custom Blocks 
  *
  */
