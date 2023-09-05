@@ -4262,3 +4262,37 @@ miles-office-banner {
     font-weight: 400;
     font-size: 2rem;
 }
+
+/* WP CONTACT FORMS 7 */
+form.wpcf7-form {
+    width: 100%;
+    padding: 32px 16px;
+    border-radius: 30px;
+    background: #f8ebe8;
+    color: var(--miles_secondary_four);
+}
+
+form.wpcf7-form > * {
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form.wpcf7-form input[type='text'] {
+    border-color: #fff;
+    background-color: #fff;
+}
+
+form.wpcf7-form input.wpcf7-submit {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    form.wpcf7-form {
+        padding: 60px 32px;
+    }
+
+    form.wpcf7-form input.wpcf7-submit {
+        width: auto;
+    }
+}
