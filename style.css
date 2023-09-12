@@ -52,6 +52,7 @@
     --mobile-horizontal-space: 1rem; /* 1rem = 16px (based on body font-size */
     --cv-filter-max-columns: 5; /* The maximum number of columns inside cv-filter (Folkene) */
     --profile-card-width: 16rem;
+    --profile-card-width-phone: 11rem;
 
     --default_focus: 2px solid var(--miles_secondary_two);
 }
@@ -3959,22 +3960,8 @@ input[type='submit']:focus {
 
 @media (max-width: 576px) {
     .cv-filter {
-        display: flex;
         gap: 1rem;
-        flex-wrap: wrap;
-    }
-    .cv-filter > miles-profile-card {
-        flex: 1 1 calc(50% - 1rem);
-    }
-}
-
-@media (max-width: 400px) {
-    .cv-filter {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .cv-filter > miles-profile-card {
-        flex: 1 1 100%;
+        grid-template-columns: repeat(auto-fill, minmax(max(var(--profile-card-width-phone), (100% - (var(--cv-filter-max-columns) - 1) * 2rem) / var(--cv-filter-max-columns)), 1fr));
     }
 }
 
