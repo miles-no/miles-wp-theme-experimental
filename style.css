@@ -3048,7 +3048,6 @@ img.aligncenter {
     /* line 259, sass/blocks/_custom-blocks.scss */
     .wp-block-pb-accordion-item {
         margin: 0 auto;
-        max-width: 66.6666vw;
     }
 }
 /* line 267, sass/blocks/_custom-blocks.scss */
@@ -3061,7 +3060,7 @@ img.aligncenter {
 @media (min-width: 768px) {
     /* line 267, sass/blocks/_custom-blocks.scss */
     .wp-block-pb-accordion-item .c-accordion__title {
-        margin: 21px 105px;
+        margin: 21px;
         padding-left: 70px;
     }
 }
@@ -3095,7 +3094,7 @@ img.aligncenter {
 @media (min-width: 768px) {
     /* line 301, sass/blocks/_custom-blocks.scss */
     .wp-block-pb-accordion-item .c-accordion__content {
-        margin: 0 105px 42px;
+        margin: 0 21px;
         padding-left: 70px;
     }
 }
