@@ -16,6 +16,7 @@
  * FUNCTIONS
  */
 include_once "miles_limes.php";
+include_once "shortcode_util.php";
 
 $MAX_RESULT_SIZE = 100;
 
@@ -48,6 +49,8 @@ $content = get_the_content();
 $title = get_the_title();
 
 $norwegian_offices = miles_limes\get_offices();
+//arguments are: office, role, email
+$consultants = miles_limes\get_consultants(null, null, null);
 
 $parsedQuery = resolvedQueryParameters();
 $selected_office = $parsedQuery['office'] ?? null;
@@ -59,6 +62,7 @@ foreach ($norwegian_offices as $office) {
     $offices[] = array(
         'selected' => $selected,
         'href' => $selected ? $current_url : $current_url . "?office=" . $office['officeId'],
+        'officeId' => $office['officeId'],
         'class' => $selected ? "class='selected'" : null,
         'name' => $office['name']
     );
@@ -71,9 +75,40 @@ foreach ($custom_tags as $roleKey => $roleId) {
     $roles[] = array(
         'selected' => $selected,
         'href' => $selected ? $current_url : $current_url . "?area=" . $roleId,
+        'roleId' => $roleId,
         'class' => $selected ? "class='selected'" : null,
         'name' => $roleKey
     );
+}
+
+
+    $result = '';
+
+    foreach ($consultants as $consultant) {
+        $hidden = false;
+    
+        if ($selected_office) {
+            $hidden = $consultant['officeId'] != $selected_office;
+        } elseif ($selected_role) {
+            $hidden = !in_array($selected_role, $consultant['roles']);
+        }
+    
+        $result .= shortcode_util\toWebComponent('miles-profile-card', consultant_as_webcomponent($consultant, $hidden), null);
+    }
+    
+
+function consultant_as_webcomponent( $consultant, $hidden ): array {
+	return array(
+		'name'     => $consultant["name"],
+		'location' => $consultant["office"],
+		'jobtitle' => $consultant["title"],
+		'image'    => $consultant["imageUrlThumbnail"],
+		'email'    => $consultant["email"],
+		'phone'    => $consultant["telephone"],
+        'roles'    => implode(',', $consultant["roles"]),
+        'officeId' => $consultant['officeId'],
+        'class'    => $hidden ? "class='hidden'" : null,
+	);
 }
 
 ?>
@@ -85,8 +120,8 @@ foreach ($custom_tags as $roleKey => $roleId) {
             <ul>
                 <?php foreach ($offices as $office): ?>
                     <li <?php echo $office["class"] ?>>
-                        <miles-button-anchor <?php echo $office["selected"] ? 'selected' : '' ?> color="#3F1221"
-                                             href="<?php echo $office['href']; ?>"><?php echo ucfirst($office['name']); ?></miles-button-anchor>
+                        <miles-filter-button filter="<?php echo $office['officeId']; ?>" <?php echo $office["selected"] ? 'selected' : '' ?> color="#3F1221"
+                                             href="<?php echo $office['href']; ?>"><?php echo ucfirst($office['name']); ?></miles-filter-button>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -96,14 +131,18 @@ foreach ($custom_tags as $roleKey => $roleId) {
             <ul>
                 <?php foreach ($roles as $role): ?>
                     <li <?php echo $role["class"] ?>>
-                        <miles-button-anchor  <?php echo $role["selected"] ? 'selected' : '' ?> color="#3F1221"
-                                             href="<?php echo $role['href']; ?>"><?php echo ucfirst($role['name']); ?></miles-button-anchor>
+                    <miles-filter-button filter="<?php echo $role['roleId']; ?>" <?php echo $role["selected"] ? 'selected' : '' ?> color="#3F1221"
+                                             href="<?php echo $role['href']; ?>"><?php echo ucfirst($role['name']); ?></miles-filter-button >
                     </li>
                 <?php endforeach; ?>
             </ul>
         </div>
         <section class="cv-filter">
-            <?php echo do_shortcode('[show-consultant-group office="' . $selected_office . '" area="' . $selected_role . '" wc_name="miles-profile-card"]'); ?>
+            <?php 
+                echo $result;
+                //echo do_shortcode('[show-consultant-group office="' . $selected_office . '" area="' . $selected_role . '" wc_name="miles-profile-card"]'); 
+            ?>
+        <miles-filter></miles-filter>
         </section>
     </main>
     <!-- #main -->
