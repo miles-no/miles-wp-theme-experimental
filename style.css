@@ -4102,6 +4102,19 @@ miles-podcast-teaser {
     object-fit: cover;
 }
 
+#primary.our_people miles-banner::part(banner-image) miles-curve {
+    bottom: 25%;
+    transform: rotate(45deg);
+    display: block;
+    position: absolute;
+    right: -1em;
+    height: 200px;
+    width: 200px;
+}
+
+#primary.our_people miles-banner::part(banner-image)  {
+    background-position: left
+}
 
 /**
   Fagblog teaser slot
