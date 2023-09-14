@@ -4102,7 +4102,7 @@ miles-podcast-teaser {
     object-fit: cover;
 }
 
-#primary.our_people miles-banner::part(banner-image) miles-curve {
+#primary miles-banner[icon]::part(banner-image) miles-curve {
     bottom: 25%;
     transform: rotate(45deg);
     display: block;
@@ -4112,7 +4112,7 @@ miles-podcast-teaser {
     width: 200px;
 }
 
-#primary.our_people miles-banner::part(banner-image)  {
+#primary miles-banner[icon]::part(banner-image)  {
     background-position: left
 }
 
