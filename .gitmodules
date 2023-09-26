@@ -1,0 +1,3 @@
+[submodule "shared-css"]
+	path = shared-css
+	url = https://github.com/miles-no/miles-site-css
